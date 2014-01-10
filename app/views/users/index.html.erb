@@ -1,0 +1,23 @@
+<h1>Windscreen Users</h1>
+
+<table class="table table-striped">
+  <tr>
+    <th>Username</th>
+    <th>Privilege Level</th>
+    <th>Screens</th>
+    <th>Approved</th>
+  </tr>
+
+<% @users.each do |user| %>
+  <tr>
+    <td><%= link_to user.username, user %><%= " - You" if current_user == user %></td>
+    <td><%= user.privilege_text %></td>
+    <td><%= user.screens.count %></td>
+    <td><%= user.screens.where(:approved => true).count %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Add a User', new_user_path, :class => 'btn btn-primary' %>

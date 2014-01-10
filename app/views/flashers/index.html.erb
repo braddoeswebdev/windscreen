@@ -1,0 +1,22 @@
+<h1>Flash Graphics</h1>
+
+<table class="table">
+    <% @flashers.in_groups_of(4) do |g| %>
+        <tr>
+            <% g.each do |f| %>
+                <% if f %>
+                    <td width="25%">
+                        <%= link_to f do %>
+                            <%= image_tag f.graphic.url(:screen) %><br/>
+                            <%= f.name %>
+                        <% end %>
+                    </td>
+                <% end %>
+            <% end %>
+        </tr>
+    <% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Flasher', new_flasher_path %>

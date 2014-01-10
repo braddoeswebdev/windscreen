@@ -1,0 +1,12 @@
+<h1><%= @user.username %></h1>
+<h3><%= @user.privilege_text %></h3>
+
+<br/>
+<p>
+<%= link_to 'Edit', edit_user_path(@user), :class => 'btn btn-warning' %>
+<%= link_to 'Destroy', @user, :method => :delete, :confirm => "Really delete #{@user.username}", :class => 'btn btn-danger' %>
+</p>
+
+<p>
+<%= link_to "Back to User List", users_path, :class => 'btn btn-info' %>
+</p>

@@ -1,0 +1,5 @@
+flash("Flashing <%= @flasher.name %>", "success");
+
+<% publish_to "/windscreen/ctrl" do %>
+  doFlash('<%= @flasher.graphic.url(:screen) %>');
+<% end %>

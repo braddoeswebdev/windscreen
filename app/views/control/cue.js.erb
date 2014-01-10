@@ -1,0 +1,20 @@
+<% if @op == "Move to Screen -->" %>
+ <% 
+  m = meta("nowPlaying").set(render :partial => 'control/meta/screen', :locals => {:screen => @screen, :user => @user})
+%>
+   flash("Playing <%= @screen.name %>", "success");
+    <% publish_to "/windscreen/ctrl" do %>
+        setContent('<%= @screen.base %>');
+    <% end %>
+
+    <% publish_to "/windscreen/meta" do %>
+        $("#meta").html('<%= j m.value %>');
+        $("#screenControl").attr('src', '<%= @screen.control_url %>');
+    <% end %>
+
+<% else %>
+    flash("Cue set to <%= @screen.name %>", "success");
+    $("#cueControl").attr('src', '<%= @screen.control_url %>?cue=1');
+<% end %>
+
+

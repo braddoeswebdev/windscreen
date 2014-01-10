@@ -1,0 +1,25 @@
+<%= form_for(@flasher) do |f| %>
+  <% if @flasher.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@flasher.errors.count, "error") %> prohibited this flasher from being saved:</h2>
+
+      <ul>
+      <% @flasher.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :graphic %><br />
+    <%= f.file_field :graphic %>
+  </div>
+  <div class="actions">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+  </div>
+<% end %>

@@ -1,0 +1,15 @@
+flash("Set screen <%= @screen.name %>", "success");
+<% 
+  m = meta("nowPlaying").set(render :partial => 'control/meta/screen', :locals => {:screen => @screen, :user => @user})
+%>
+
+<% publish_to "/windscreen/ctrl" do %>
+  setContent('<%= @screen.base %>');
+<% end %>
+
+<% publish_to "/windscreen/meta" do %>
+  $("#meta").html('<%= j m.value %>');
+  $("#screenControl").attr('src', '<%= @screen.control_url %>');
+<% end %>
+
+

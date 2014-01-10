@@ -1,0 +1,17 @@
+<div id="container">
+<iframe src="<%= meta('lastURL').value %>" id="screen" frameborder="0" seamless="seamless">
+</iframe>
+
+<iframe src="" id="spareScreen" frameborder="0" seamless="seamless">
+</iframe>
+</div>
+
+<img src="" id="flasher"></img>
+
+<div id="meta">
+    <p>screen: <span id="scr"></span> - <span id="scrOn">true</span></p>
+    <p>spare: <span id="spar"></span> - <span id="sparOn">false</span></p>
+    <p>target: <span id="target"></span></p>
+</div>
+
+<%= subscribe_to "/windscreen/ctrl" %>

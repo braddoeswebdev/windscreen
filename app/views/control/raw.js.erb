@@ -1,0 +1,14 @@
+flash("Set content.", "success");
+
+<% 
+  m = meta("nowPlaying").set(render :partial => 'control/meta/raw', :locals => {:user => @user})
+%>
+
+<% publish_to "/windscreen/ctrl" do %>
+  $('#screen').attr('src', "data:text/html;charset=utf-8," + '<%= @data.html_safe %>');
+<% end %>
+
+<% publish_to "/windscreen/meta" do %>
+  $("#meta").html('<%= j m.value %>');
+  $("#screenControl").attr('src', '<%= noctrl_url %>');
+<% end %>

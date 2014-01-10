@@ -1,0 +1,54 @@
+<h1>Screen - <%= @screen.name %></h1>
+
+<iframe src="<%= @screen.base_url %>" id="preview" frameborder="0" seamless="seamless" width="240" height="96">
+</iframe>
+
+<h3>by <%= @screen.user.username %></h3>
+
+<p>
+<b>Base URL: </b> <span style="font-family: monospace;"><%= link_to @screen.base_url, @screen.base_url %></span>
+</p>
+<p>
+<b>Control URL: </b> <span style="font-family: monospace;"><%= link_to @screen.control_url, @screen.control_url %></span>
+</p>
+
+<p>
+<% if @screen.approved %>
+  <% if current_user.manager? %>
+    <%= link_to 'Unapprove', unapprove_screen_path(@screen), :class => 'btn btn-danger' %>
+  <% else %>
+    Unapproved
+  <% end %>
+<% else %>
+  <% if current_user.manager? %>
+    <%= link_to 'Approve', approve_screen_path(@screen), :class => 'btn btn-success' %>
+  <% else %>
+    Approved
+  <% end %>
+<% end %>
+</p>
+
+<p>
+<% if @screen.enabled %>
+  <% if current_user.manager? || @screen.user == current_user %>
+    <%= link_to 'Disable', disable_screen_path(@screen), :class => 'btn btn-danger' %>
+  <% else %>
+    Disabled
+  <% end %>
+<% else %>
+  <% if current_user.manager? || @screen.user == current_user %>
+    <%= link_to 'Enable', enable_screen_path(@screen), :class => 'btn btn-success' %>
+  <% else %>
+    Enabled
+  <% end %>
+<% end %>
+</p>
+
+<p>
+<%= link_to 'Edit', edit_screen_path(@screen), :class => 'btn btn-warning' %> 
+<%= link_to 'Delete', @screen, :method => :delete, :class => 'btn btn-danger', :confirm => 'Are you really sure?' %>
+</p>
+
+
+
+<%= link_to 'Back to Screen List', screens_path, :class => 'btn btn-info' %>

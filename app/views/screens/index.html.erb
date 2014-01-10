@@ -1,0 +1,31 @@
+<h1>Screens</h1>
+
+<table class="table table-striped">
+  <tr>
+    <th>Name</th>
+    <th>Base</th>
+    <th>User</th>
+    <th>Approved</th>
+    <th>Enabled</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @screens.each do |screen| %>
+  <tr>
+    <td><%= link_to screen.name, screen %></td>
+    <td><%= screen.base %></td>
+    <td><%= link_to screen.user.username, screen.user %></td>
+    <td><%= truthy_thumb screen.approved %></td>
+    <td><%= truthy_thumb screen.enabled %></td>
+    <td>
+      <%= link_to 'Edit', edit_screen_path(screen), :class => 'btn-info btn-mini' %>
+      <%= link_to 'Destroy', screen, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn-danger btn-mini' %>
+    </td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Screen', new_screen_path, :class => 'btn btn-primary' %>

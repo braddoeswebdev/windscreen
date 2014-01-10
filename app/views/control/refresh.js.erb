@@ -1,0 +1,5 @@
+flash("Refreshing screen", 'error');
+
+<% publish_to '/windscreen/ctrl' do %>
+    panicRefresh();
+<% end %>

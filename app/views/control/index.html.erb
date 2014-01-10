@@ -1,0 +1,61 @@
+<div class="row">
+    <%= subscribe_to "/windscreen/meta" %>
+    <div id="meta" class="span12">
+        <%= meta("nowPlaying").value.html_safe %>
+    </div>
+</div>
+<div class="row">
+    <div class="span6">
+        <h2>Cueing</h2>
+    </div>
+    <div class="span6">
+        <h2>Live</h2>
+    </div>
+</div>
+<div class="row">
+<div class="span6">
+    <%= form_tag cue_screen_path, :remote => true do %>
+        <div style="margin-bottom: 20px;">
+            <% Screen.where(:enabled => true, :approved => true).each do |screen| %>
+                <%= submit_tag screen.name, :class => 'btn btn-primary btn-ctrl' %>
+            <% end %>
+        </div>
+
+        <div id="cueContainer">
+            <iframe id="cueControl" class="ctrlFrame" src="<%= meta('lastCue').value == '0' ? noctrl_path : Screen.find(meta('lastCue').value).control_url + "?cue=1" %>"></iframe>
+        </div>
+        <%= submit_tag "Move to Screen -->", :class => 'btn btn-success btn-large' %>
+    <% end %>
+</div>
+
+
+<div class="span6">
+    <div>
+        <%= form_tag control_screen_path, :remote => true do %>
+            <% Screen.where(:enabled => true, :approved => true).each do |screen| %>
+                <%= submit_tag screen.name, :class => 'btn btn-success btn-ctrl' %>
+            <% end %>
+        <% end %>
+    </div>
+
+    <div id="controlContainer">
+        <iframe id="screenControl" class="ctrlFrame" src="<%= meta('lastScreen').value == '0' ? noctrl_path : Screen.find(meta('lastScreen').value).control_url %>">
+        </iframe>
+    </div>
+
+    <%= form_tag control_refresh_path, :remote => true do %>
+        <%= submit_tag "Panic Refresh", :class => 'btn btn-large btn-danger' %>
+    <% end %>
+</div>
+</div>
+
+<div class="row">
+    <h2>Flash Graphics</h2>
+
+    <% Flasher.all.each do |f| %>
+        <%= form_tag control_flasher_path, :remote => true do %>
+            <%= hidden_field_tag :flasher_id, f.id %>
+            <%= submit_tag f.name, :class => 'btn btn-inverse' %>
+        <% end %>
+    <% end %>
+</div>

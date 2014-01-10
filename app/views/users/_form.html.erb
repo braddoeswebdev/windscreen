@@ -1,0 +1,51 @@
+<%= form_for(@user) do |f| %>
+  <% if @user.errors.any? %>
+    <div class="alert alert-error">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :username %>
+    <%= f.text_field :username %>
+  </div>
+  <div class="field">
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+  </div>
+  <% if current_user.admin? %>
+  <table class="checktable">
+    <tr>
+      <td>Admin</td>
+      <td><%= f.check_box :admin %></td>
+    </tr>
+
+    <tr>
+      <td>Manager</td>
+      <td><%= f.check_box :manager %></td>
+    </tr>
+
+    <tr>
+      <td>Author</td>
+      <td><%= f.check_box :author %></td>
+    </tr>
+
+    <tr>
+      <td>Operator</td>
+      <td><%= f.check_box :operator %></td>
+    </tr>
+  </table>
+<% else %>
+  <p>Privileges: <%= @user.privilege_text %></p>
+<% end %>
+
+  <div class="actions">
+    <%= f.submit :class => "btn btn-primary" %>
+  </div>
+<% end %>

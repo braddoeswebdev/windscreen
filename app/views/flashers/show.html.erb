@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @flasher.name %>
+</p>
+
+<p>
+  <b>Graphic:</b>
+  <%= image_tag @flasher.graphic.url(:screen) %>
+</p>
+
+<%= link_to 'Edit', edit_flasher_path(@flasher) %> |
+<%= link_to 'Back', flashers_path %>

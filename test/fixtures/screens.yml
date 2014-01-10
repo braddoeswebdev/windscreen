@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  base: MyString
+  notes: MyText
+  user_id: 1
+  approved: false
+  enabled: false
+
+two:
+  name: MyString
+  base: MyString
+  notes: MyText
+  user_id: 1
+  approved: false
+  enabled: false
