@@ -12,6 +12,7 @@ Windscreen::Application.routes.draw do
   post "control/screen" => 'control#screen', :as => :control_screen
   post "control/flasher" => 'control#flasher', :as => :control_flasher
   post "control/refresh" => 'control#refresh', :as => :control_refresh
+  post "control/passthrough" => 'control#passthrough', :as => :control_passthrough
   get "display/" => 'display#index', :as => :display
 
   post "session/create", :as => 'login'

@@ -50,22 +50,26 @@ function doFlash(target) {
     }
 }
 
+function passthroughCommand(cmd) {
+    $(currentScreen)[0].contentWindow.postMessage(cmd, '*');
+}
+
 function play() {
-    $(currentScreen)[0].contentWindow.play();
+    $(currentScreen)[0].contentWindow.postMessage('play', '*');
 }
 
 function pause() {
-    $(currentScreen)[0].contentWindow.pause();
+    $(currentScreen)[0].contentWindow.postMessage('pause', '*');
 }
 
 function stop() {
-    $(currentScreen)[0].contentWindow.stop();
+    $(currentScreen)[0].contentWindow.postMessage('stop', '*');
 }
 
 function next() {
-    $(currentScreen)[0].contentWindow.next();
+    $(currentScreen)[0].contentWindow.postMessage('next', '*');
 }
 
 function previous() {
-    $(currentScreen)[0].contentWindow.previous();
+    $(currentScreen)[0].contentWindow.postMessage('previous', '*');
 }

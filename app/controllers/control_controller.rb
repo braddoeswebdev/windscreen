@@ -1,5 +1,5 @@
 class ControlController < ApplicationController
-  before_filter :check_for_operator
+  before_filter :check_for_operator, :except => ['passthrough']
   def index
   end
 
@@ -41,5 +41,8 @@ class ControlController < ApplicationController
 
   def flasher
       @flasher = Flasher.find(params[:flasher_id])
+  end
+
+  def passthrough
   end
 end

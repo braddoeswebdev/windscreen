@@ -1,10 +1,10 @@
 development:
-  server: "http://labs.bradsotherbrain.com:9292/faye"
+  server: "http://delta:9292/faye"
   secret_token: "7c3bdf6397f079b38f4cda3342ec150e3298edef7dbad5fdbedb3bc790c24e1b"
 test:
   server: "http://localhost:9292/faye"
   secret_token: "secret"
 production:
-  server: "http://labs.bradsotherbrain.com:9292/faye"
+  server: "http://delta:9292/faye"
   secret_token: "7c3bdf6397f079b38f4cda3342ec150e3298edef7dbad5fdbedb3bc790c24e1b"
   signature_expiration: 3600 # one hour
