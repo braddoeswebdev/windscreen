@@ -43,4 +43,9 @@ class User < ActiveRecord::Base
     ls << "Operator" if self.operator?
     ls.join ', '
   end
+
+  def adminify
+      self.privilege = 8
+      self.save
+  end
 end
