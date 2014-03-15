@@ -1,0 +1,2 @@
+ROOT_DOMAIN = "somehwere.com"
+ROOT_URL = "somewhere.com:9000"

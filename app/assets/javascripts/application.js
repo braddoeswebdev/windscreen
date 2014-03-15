@@ -16,7 +16,7 @@
 //= require bootstrap
 //= require private_pub
 
-document.domain = "labs.bradsotherbrain.com"
+document.domain = ROOT_DOMAIN
 
 function makeid()
 {
