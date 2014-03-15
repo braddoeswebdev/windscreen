@@ -51,21 +51,21 @@ function doFlash(target) {
 }
 
 function play() {
-    $(currentScreen).contentWindow.play();
+    $(currentScreen)[0].contentWindow.play();
 }
 
 function pause() {
-    $(currentScreen).contentWindow.pause();
+    $(currentScreen)[0].contentWindow.pause();
 }
 
 function stop() {
-    $(currentScreen).contentWindow.stop();
+    $(currentScreen)[0].contentWindow.stop();
 }
 
 function next() {
-    $(currentScreen).contentWindow.next();
+    $(currentScreen)[0].contentWindow.next();
 }
 
 function previous() {
-    $(currentScreen).contentWindow.previous();
+    $(currentScreen)[0].contentWindow.previous();
 }

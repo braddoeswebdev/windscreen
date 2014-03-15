@@ -8,10 +8,10 @@ class User < ActiveRecord::Base
 
   def set_privilege
     self.privilege = 0
-    self.privilege += 8 if self.admin == '1'
-    self.privilege += 4 if self.manager == '1'
-    self.privilege += 2 if self.author == '1'
-    self.privilege += 1 if self.operator == '1'
+    self.privilege += 8 if self.admin
+    self.privilege += 4 if self.manager
+    self.privilege += 2 if self.author
+    self.privilege += 1 if self.operator
   end
 
   # 1 - operator

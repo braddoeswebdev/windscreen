@@ -22,7 +22,7 @@
         </div>
 
         <div id="cueContainer">
-            <iframe id="cueControl" class="ctrlFrame" src="<%= meta('lastCue').value == '0' ? noctrl_path : Screen.find(meta('lastCue').value).control_url + "?cue=1" %>"></iframe>
+            <iframe id="cueControl" class="ctrlFrame" src="<%= meta('lastCue').value == '' ? noctrl_path : Screen.find(meta('lastCue').value).control_url + "?cue=1" %>"></iframe>
         </div>
         <%= submit_tag "Move to Screen -->", :class => 'btn btn-success btn-large' %>
     <% end %>
@@ -39,7 +39,7 @@
     </div>
 
     <div id="controlContainer">
-        <iframe id="screenControl" class="ctrlFrame" src="<%= meta('lastScreen').value == '0' ? noctrl_path : Screen.find(meta('lastScreen').value).control_url %>">
+        <iframe id="screenControl" class="ctrlFrame" src="<%= meta('lastScreen').value == '' ? noctrl_path : Screen.find(meta('lastScreen').value).control_url %>">
         </iframe>
     </div>
 
