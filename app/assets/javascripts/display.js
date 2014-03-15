@@ -2,6 +2,7 @@
 //= require jquery_ujs
 //= require private_pub
 
+var currentScreen = "#screen";
 var targetScreen = "#spareScreen";
 var path = "";
 var old = "";
@@ -9,6 +10,7 @@ var flashing = false;
 
 function resizeScreen(x, y) {
     $('#screen').css({height: y, width: x});
+    $('#spareScreen').css({height: y, width: x});
 }
 
 function setContent(url) {
@@ -16,7 +18,7 @@ function setContent(url) {
         path = url;
         $(targetScreen).attr('src', url);
         $(targetScreen).load(transition);
-        if(targetScreen == "#screen") {targetScreen = "#spareScreen";}else{targetScreen = "#screen"; }
+        if(targetScreen == "#screen") {targetScreen = "#spareScreen"; currentScreen = "#screen";}else{targetScreen = "#screen"; currentScreen = "#spareScreen" }
     }
 }
 
@@ -48,3 +50,22 @@ function doFlash(target) {
     }
 }
 
+function play() {
+    $(currentScreen).contentWindow.play();
+}
+
+function pause() {
+    $(currentScreen).contentWindow.pause();
+}
+
+function stop() {
+    $(currentScreen).contentWindow.stop();
+}
+
+function next() {
+    $(currentScreen).contentWindow.next();
+}
+
+function previous() {
+    $(currentScreen).contentWindow.previous();
+}
